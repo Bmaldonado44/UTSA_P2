@@ -1,0 +1,83 @@
+---
+title: "Analysis of Variance"
+author: "Brenda Maldonado"
+date: "9/26/2021"
+output: 
+pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(haven)
+library(psych)
+library(here)
+library(scales)
+```
+
+## 1: 
+#### The heartbpchol.csv data set contains continuous cholesterol (Cholesterol) and blood pressure status (BP_Status) (category: High/ Normal/ Optimal) for alive patients. 
+
+```{r}
+chol <- read.csv('heartbpchol.csv')
+head(chol,2)
+```
+
+
+#### For the heartbpchol.xlsx data set, consider a one-way ANOVA model to identify differences between group cholesterol means. The normality assumption is reasonable, so you can proceed without testing normality.
+
+## a) 
+#### Perform a one-way ANOVA for Cholesterol with BP_Status as the categorical predictor.  Comment on statistical significance of BP_Status, the amount of variation described by the model, and whether or not the equal variance assumption can be trusted.
+
+```{r}
+aov(Cholesterol~BP_Status, data=chol) %>% summary()
+```
+
+- Since the F value is 6.671 the null hypothesis is rejected.  This means that the groups being tested are significantly different.
+
+
+## b) 
+#### Comment on any significantly different cholesterol means as determined by the post-hoc test comparing all pairwise differences. Specifically explain what that tells us about differences in cholesterol levels across blood pressure status groups, like which group has the highest or lowest mean values of Cholesterol.
+
+
+```{r}
+
+```
+
+
+#### Exercise 2: Analysis of Variance 
+###### For this problem use the bupa.csv data set. Check UCI Machine Learning Repository for more information (http://archive.ics.uci.edu/ml/datasets/Liver+Disorders). The mean corpuscular volume and alkaline phosphatase are blood tests thought to be sensitive to liver disorder related to excessive alcohol consumption. We assume that normality and independence assumptions are valid.
+
+```{r}
+bupa <- read.csv('bupa.csv')
+bupa %>% head()
+```
+
+###### a) Perform a one-way ANOVA for mcv as a function of drinkgroup. Comment on significance of the drinkgroup, the amount of variation described by the model, and whether or not the equal 
+variance assumption can be trusted
+
+```{r}
+aov(mcv~drinkgroup,bupa)
+```
+
+###### b) Perform a one-way ANOVA for alkphos as a function of drinkgroup. Comment on statistical significance of the drinkgroup, the amount of variation described by the model, and whether or not the equal variance assumption can be trusted.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
